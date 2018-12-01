@@ -9,13 +9,14 @@
         var courses = [];
             
             function addCourse() {
-                alert("Pressed Button");
-                document.getElementById("list").innerHTML += "<li>New Item</li>"
+		var course_name = document.getElementById("course").value
+                document.getElementById("list").innerHTML += "<li>" + course_name + "</li>"
+		document.getElementById("course").value = "";
             }
         </script>
         <h1>Welcome to GET_SHIT_DONE</h1>
         <hr>
-       <center> <img src="https://steemitimages.com/DQmdriBkhWw4KwAXXwLAZ4dheFkHMyPZ1vbEWiy8Xhsuk5K/get-shit-done.jpg" alt="Shitty picture"/></center>
+       <!--<center> <img src="https://steemitimages.com/DQmdriBkhWw4KwAXXwLAZ4dheFkHMyPZ1vbEWiy8Xhsuk5K/get-shit-done.jpg" alt="Shitty picture"/></center> -->
         <div id="introduction">
       <center> <h1>About Get_Shit_Done</h1>
        <p class="one">Get Shit done is place where you can get your shit, you guessed it, Done!!</p></center>
