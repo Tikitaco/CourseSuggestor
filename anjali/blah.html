@@ -1,5 +1,13 @@
 <!DOCTYPE html>
 <html>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <head>
         <title>Getting shit done</title>
         <link href="./style.css" type="text/css" rel="stylesheet">
@@ -10,28 +18,31 @@
             
             function addCourse() {
 		var course_name = document.getElementById("course").value
-                document.getElementById("list").innerHTML += "<li>" + course_name + "</li>"
-		courses.push(course_name);
-		document.getElementById("course").value = "";
+		if (course_name.length > 0) {
+		        document.getElementById("list").innerHTML += "<li>" + course_name + "</li>"
+			courses.push(course_name);
+			document.getElementById("course").value = "";
+			document.getElementById("courses").value += course_name + ":::";
+		}
             }
         </script>
-        <h1>Welcome to GET_SHIT_DONE</h1>
+        <h1>Welcome to Course Suggester</h1>
         <hr>
        <!--<center> <img src="https://steemitimages.com/DQmdriBkhWw4KwAXXwLAZ4dheFkHMyPZ1vbEWiy8Xhsuk5K/get-shit-done.jpg" alt="Shitty picture"/></center> -->
         <div id="introduction">
-      <center> <h1>About Get_Shit_Done</h1>
-       <p class="one">Get Shit done is place where you can get your shit, you guessed it, Done!!</p></center>
+ 
             <h2>GETTING STARTED</h2>
             <p class="two">Enter the information below to help us find subjects that are perfect for you!</p>
-                <form>
-		        Name:<br>
-		        <input type="text" name="Name"><br>
+                <form action="/action_page" method="post">
+		        <!--Name:<br>
+		        <input type="text" name="name"><br>
 		        Credits Earned:<br>
-		        <input type="number">
+		        <input type="number" name="credits"> -->
 		        Add Course
 		        <input id="course" type="text">
 		               <button type="button" onclick="addCourse()">+</button>
-		        <ul id="list"></ul>	
+		        <ul name="all_courses" id="list"></ul>	
+			<input name="courses" type="hidden" id="courses">
 		        <input type="submit" value="submit">
                 </form>               
         </body>

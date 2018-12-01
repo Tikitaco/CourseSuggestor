@@ -7,7 +7,8 @@ var request =  require ( "request" );
 
 var courses = []
 var pres = {}
-
+var descriptions = {}
+var credits = {}
 
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html')
@@ -63,8 +64,14 @@ request.get( "https://api.umd.io/v0/courses/list" , (error, response, body) => {
 				 var specific_course = JSON.parse(body)
 					if (specific_course != undefined) {
 						var id = specific_course.course_id
+						console.log(specific_course)
 						if (specific_course.relationships != undefined && specific_course.relationships.prereqs != undefined) {
 							var pre_req = specific_course.relationships.prereqs
+							if (specific_course.description != null) {
+							    descriptions[id] = specific_course.description
+							  
+							}
+							credits[id] = specific_course.credits
 							var all_words = pre_req.split(" ");
 							var pre_courses = []
 							for (var i = 0; i < all_words.length; i++) {
@@ -93,13 +100,21 @@ app.get('/', (req, res) => {
 
 
 app.post('/action_page', function(req, res){
-   console.log(req.body);
-   var courses = req.body.courses.split(":::").slice(0,-1)
-   var suggestions = findSuggestions(courses);
-   res.render('show_courses.ejs', {taken: courses, courses:suggestions})
+   var my_courses = req.body.courses.split(":::").slice(0,-1)
+   var suggestions = findSuggestions(my_courses);
+   var all_my_course_information = []
+   for (var i = 0; i < suggestions.length; i++) {
+        for (var k = 0; k < courses.length; k++) {
+            if (courses[k].course_id == suggestions[i]) {
+                all_my_course_information.push(courses[k])
+                break
+            }
+        }
+   }
+   all_my_course_information.sort()
+   res.render('show_courses.ejs', {all_courses:courses, taken: my_courses, courses:all_my_course_information, my_descriptions:descriptions, my_credits:credits})
    //res.send("You have taken: Here are the courses which you fulfill the prereqs: " + suggestions.toString());
-   
-   console.log(courses);
+ 
 });
 
 app.listen(1234, () => {
