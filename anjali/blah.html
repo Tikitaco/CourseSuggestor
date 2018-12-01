@@ -11,6 +11,7 @@
             function addCourse() {
 		var course_name = document.getElementById("course").value
                 document.getElementById("list").innerHTML += "<li>" + course_name + "</li>"
+		courses.push(course_name);
 		document.getElementById("course").value = "";
             }
         </script>
@@ -22,15 +23,16 @@
        <p class="one">Get Shit done is place where you can get your shit, you guessed it, Done!!</p></center>
             <h2>GETTING STARTED</h2>
             <p class="two">Enter the information below to help us find subjects that are perfect for you!</p>
-                Name:<br>
-                <input type="text" name="Name"><br>
-                Credits Earned:<br>
-                <input type="number">
-                Add Course
-                <input id="course" type="text">
-                       <button onclick="addCourse()">+</button>
-                <ul id="list"></ul>
-                
-                                   
+                <form>
+		        Name:<br>
+		        <input type="text" name="Name"><br>
+		        Credits Earned:<br>
+		        <input type="number">
+		        Add Course
+		        <input id="course" type="text">
+		               <button type="button" onclick="addCourse()">+</button>
+		        <ul id="list"></ul>	
+		        <input type="submit" value="submit">
+                </form>               
         </body>
 </html>
