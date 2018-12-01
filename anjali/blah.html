@@ -1,1 +1,35 @@
 <!DOCTYPE html>
+<html>
+    <head>
+        <title>Getting shit done</title>
+        <link href="./style.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+        <script>
+        var courses = [];
+            
+            function addCourse() {
+                alert("Pressed Button");
+                document.getElementById("list").innerHTML += "<li>New Item</li>"
+            }
+        </script>
+        <h1>Welcome to GET_SHIT_DONE</h1>
+        <hr>
+       <center> <img src="https://steemitimages.com/DQmdriBkhWw4KwAXXwLAZ4dheFkHMyPZ1vbEWiy8Xhsuk5K/get-shit-done.jpg" alt="Shitty picture"/></center>
+        <div id="introduction">
+      <center> <h1>About Get_Shit_Done</h1>
+       <p class="one">Get Shit done is place where you can get your shit, you guessed it, Done!!</p></center>
+            <h2>GETTING STARTED</h2>
+            <p class="two">Enter the information below to help us find subjects that are perfect for you!</p>
+                Name:<br>
+                <input type="text" name="Name"><br>
+                Credits Earned:<br>
+                <input type="number">
+                Add Course
+                <input id="course" type="text">
+                       <button onclick="addCourse()">+</button>
+                <ul id="list"></ul>
+                
+                                   
+        </body>
+</html>
