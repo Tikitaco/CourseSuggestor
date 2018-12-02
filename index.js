@@ -69,7 +69,8 @@ request.get( "https://api.umd.io/v0/courses/list" , (error, response, body) => {
 							var pre_req = specific_course.relationships.prereqs
 							if (specific_course.description != null) {
 							    descriptions[id] = specific_course.description
-							  
+							} else {
+							    descriptions[id] = "No description available"
 							}
 							credits[id] = specific_course.credits
 							var all_words = pre_req.split(" ");

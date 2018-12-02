@@ -1,19 +1,29 @@
 <html>
+<head>
+ 
+                  
+   
+</head>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-<h1>Courses whose pre-reqs you fulfill taking <%= taken %></h1>
+<center>
+<h1 style="color:blue;">Courses whose pre-reqs you fulfill taking <%= taken %></h1><br><br><br>
+<ul class="list">
 <% for (var i = 0; i < courses.length; i++) {%>
-<div style="background:whitesmoke; border:1px solid black;width:955px;border-radius: 5px;">
-	<li><%= courses[i].course_id + " (" + courses[i].name + ")" + " [" + my_credits[courses[i].course_id] + " credits]" %></li>
-	<div>
+<div style="background:whitesmoke; border:1px solid black;width:955px;border-radius: 5px; padding:10px;">
+
+	<center><div style = "font-size:20px; color:green;"s><strong><%= courses[i].course_id + " (" + courses[i].name + ")" + " [" + my_credits[courses[i].course_id] + " credits]" %></strong></div></center>
+	<div style="font-size:15px;">
 		<%= my_descriptions[courses[i].course_id] %>
 	</div>
+
 </div>
 <br>
 <% } %>
+</ul>
+</center>
 </html>
